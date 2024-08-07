@@ -8,8 +8,8 @@ It’s a useful application that you can actually use in your daily life, and it
 
 ### *Features:* ###
 - Created using:
--   Java JDK 22
--   JavaFX
+  - Java JDK 22
+  - JavaFX
 
 ### *Setting Up:* ###
 
