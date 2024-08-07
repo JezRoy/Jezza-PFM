@@ -1,6 +1,6 @@
-#**Jezza-PFM:**
+# **Jezza-PFM:** #
 
-##*Jezza's Personal Finance Manager*
+## *Jezza's Personal Finance Manager* ##
 
 
 This project will help you track your income, expenses, savings, and investments. 
