@@ -2,17 +2,27 @@ package application;
 
 public class Investment {
 	
+	private String name;
 	private String type;
 	private double amount;
 	private double returnRate;
 	private String maturityDate;
 	
-	public Investment(String type, double amount, double returnRate, String maturityDate) {
+	public Investment(String name, String type, double amount, double returnRate, String maturityDate) {
 		super();
+		this.name = name;
 		this.type = type;
 		this.amount = amount;
 		this.returnRate = returnRate;
 		this.maturityDate = maturityDate;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getType() {

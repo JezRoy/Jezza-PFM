@@ -1,7 +1,11 @@
 package application;
 
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -27,6 +31,36 @@ public class FinanceManager {
         transactions.add(expense);
     }
     
+	// Calculate monthly income from the most recent month
+	public double calculateMonthlyIncome() {
+	    Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.MONTH, -1); // Move to the previous month
+	    int lastMonth = cal.get(Calendar.MONTH);
+
+	    return transactions.stream()
+	            .filter(t -> t instanceof Income && getMonthFromDate(t.getDate()) == lastMonth)
+	            .mapToDouble(Transaction::getAmount)
+	            .sum();
+	}
+    
+    // Calculate monthly expenses from the most recent month
+	public double calculateMonthlyExpenses() {
+	    Calendar cal = Calendar.getInstance();
+	    cal.add(Calendar.MONTH, -1); // Move to the previous month
+	    int lastMonth = cal.get(Calendar.MONTH);
+
+	    return transactions.stream()
+	            .filter(t -> t instanceof Expense && getMonthFromDate(t.getDate()) == lastMonth)
+	            .mapToDouble(Transaction::getAmount)
+	            .sum();
+	}
+    
+    private int getMonthFromDate(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal.get(Calendar.MONTH);
+    }
+	
 	public double calculateTotalIncome() {
         return transactions.stream()
                 .filter(t -> t instanceof Income)
@@ -68,7 +102,7 @@ public class FinanceManager {
     public Budget getBudget() {
         return budget;
     }
-
+    
     public void addSavings(Savings saving) {
         savings.add(saving);
     }
