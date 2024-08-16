@@ -1,7 +1,5 @@
 package application;
 
-import java.time.LocalDate;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
@@ -101,14 +99,6 @@ public class FinanceManager {
 
     public Budget getBudget() {
         return budget;
-    }
-    
-    public void addSavings(Savings saving) {
-        savings.add(saving);
-    }
-
-    public void addInvestment(Investment investment) {
-        investments.add(investment);
     }
 
     // Removing incomes
@@ -253,4 +243,65 @@ public class FinanceManager {
         }
         return false; // Transaction with given id not found
     }
+
+    // Savings and Investment Handling
+    public void addSavings(Savings saving) {
+        savings.add(saving);
+    }
+
+    public void addInvestment(Investment investment) {
+        investments.add(investment);
+    }
+    
+    public boolean updateSavings(String name, Savings updatedSavings) {
+        for (int i = 0; i < savings.size(); i++) {
+            if (savings.get(i).getName().equals(name)) {
+                savings.set(i, updatedSavings);
+                return true;
+            }
+        }
+        return false; // Savings with the given name not found
+    }
+
+    public boolean removeSavings(String name) {
+        Iterator<Savings> iterator = savings.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getName().equals(name)) {
+                iterator.remove();
+                return true; // Savings removed
+            }
+        }
+        return false; // Savings with the given name not found
+    }
+
+    public boolean updateInvestment(String name, Investment updatedInvestment) {
+        for (int i = 0; i < investments.size(); i++) {
+            if (investments.get(i).getName().equals(name)) {
+                investments.set(i, updatedInvestment);
+                return true;
+            }
+        }
+        return false; // Investment with the given name not found
+    }
+
+    public boolean removeInvestment(String name) {
+        Iterator<Investment> iterator = investments.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().getName().equals(name)) {
+                iterator.remove();
+                return true; // Investment removed
+            }
+        }
+        return false; // Investment with the given name not found
+    }
+
+    public List<Savings> getAllSavings() {
+        return new ArrayList<>(savings);
+    }
+
+    public List<Investment> getAllInvestments() {
+        return new ArrayList<>(investments);
+    }
+
+    
 }

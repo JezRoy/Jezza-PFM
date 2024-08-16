@@ -21,7 +21,7 @@ public class MainApp extends Application{
 			// Set up the UI
 			FinanceManagerUI ui = new FinanceManagerUI(financeManager);
 			
-            Scene scene = new Scene(ui.getUI(), 815, 600); // Set up a window
+            Scene scene = new Scene(ui.getUI(), 820, 600); // Set up a window
             primaryStage.setScene(scene);
             primaryStage.setTitle("Finance Manager");
             primaryStage.show();
