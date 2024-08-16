@@ -10,6 +10,7 @@ It’s a useful application that you can actually use in your daily life, and it
 - Created using:
   - Java JDK 22
   - JavaFX
+  - SQLite
 
 ### *Setting Up:* ###
 
